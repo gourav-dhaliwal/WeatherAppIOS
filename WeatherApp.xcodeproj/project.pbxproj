@@ -6,8 +6,17 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		610157782D9B6A51006BC2A3 /* CitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610157772D9B6A2A006BC2A3 /* CitiesView.swift */; };
+		6101577A2D9B6A71006BC2A3 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610157792D9B6A63006BC2A3 /* WeatherModel.swift */; };
+		6101577C2D9B6A8D006BC2A3 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6101577B2D9B6A7F006BC2A3 /* WeatherViewModel.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		610157662D9B5432006BC2A3 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		610157772D9B6A2A006BC2A3 /* CitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesView.swift; sourceTree = "<group>"; };
+		610157792D9B6A63006BC2A3 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		6101577B2D9B6A7F006BC2A3 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +41,9 @@
 		6101575D2D9B5432006BC2A3 = {
 			isa = PBXGroup;
 			children = (
+				610157772D9B6A2A006BC2A3 /* CitiesView.swift */,
+				610157792D9B6A63006BC2A3 /* WeatherModel.swift */,
+				6101577B2D9B6A7F006BC2A3 /* WeatherViewModel.swift */,
 				610157682D9B5432006BC2A3 /* WeatherApp */,
 				610157672D9B5432006BC2A3 /* Products */,
 			);
@@ -119,6 +131,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6101577C2D9B6A8D006BC2A3 /* WeatherViewModel.swift in Sources */,
+				6101577A2D9B6A71006BC2A3 /* WeatherModel.swift in Sources */,
+				610157782D9B6A51006BC2A3 /* CitiesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
