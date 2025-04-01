@@ -19,7 +19,7 @@ struct CitiesView: View {
                           endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
             
-            // City silhouette at bottom
+       
             VStack {
                 Spacer()
                 Image(systemName: "building.2")
@@ -102,7 +102,6 @@ struct CitiesView: View {
                                         .fill(Color.white.opacity(0.5))
                                 )
                                 .padding(.horizontal)
-                                // Swipe to delete functionality
                                 .contextMenu {
                                     Button(role: .destructive) {
                                         if let index = weatherVM.savedCities.firstIndex(where: { $0.location.name == weather.location.name }) {
