@@ -38,4 +38,57 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             errorMessage = "Unknown location status"
         }
     }
+    func fetchWeather(city: String) {
+        guard !city.isEmpty else {
+            errorMessage = "Please enter a city name"
+            return
+        }
+        
+        isLoading = true
+        errorMessage = nil
+        
+        guard let encodedCity = city.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let url = URL(string: "https://api.weatherapi.com/v1/current.json?key=\(apiKey)&q=\(encodedCity)&aqi=no") else {
+            isLoading = false
+            errorMessage = "Invalid city name"
+            return
+        }
+
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            DispatchQueue.main.async {
+                self.isLoading = false
+            }
+
+            if let error = error {
+                DispatchQueue.main.async {
+                    self.errorMessage = error.localizedDescription
+                }
+                return
+            }
+
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                DispatchQueue.main.async {
+                    self.errorMessage = "Weather data not found"
+                }
+                return
+            }
+
+            if let data = data {
+                do {
+                    let weatherData = try JSONDecoder().decode(WeatherData.self, from: data)
+                    DispatchQueue.main.async {
+                        self.weather = weatherData
+                        if !self.savedCities.contains(where: { $0.location.name == weatherData.location.name }) {
+                            self.savedCities.append(weatherData)
+                        }
+                        self.errorMessage = nil
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        self.errorMessage = "Failed to decode weather data"
+                    }
+                }
+            }
+        }.resume()
+    }
 }
